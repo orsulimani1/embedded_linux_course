@@ -1,4 +1,4 @@
-# yocto_workshop
+# Embedded Linux Course
 Yocto workshop
 
 
