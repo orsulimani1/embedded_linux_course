@@ -1,16 +1,22 @@
 # Ignore everything in the build directory
-build/*
+yocto_build/*
 
 # Do not ignore the conf directory
-!build/conf/
+!yocto_build/conf/
 
 # Ignore everything in conf except specific files
-build/conf/*
-!build/conf/local.conf
-!build/conf/bblayers.conf
-!build/conf/*.conf
+yocto_build/conf/*
+!yocto_build/conf/local.conf
+!yocto_build/conf/bblayers.conf
+!yocto_build/conf/*.conf
 
 !yocto/poky/meta-ti
 !yocto/poky/meta-
 
-build/conf/bblayers.conf
+yocto_build/conf/bblayers.conf
+
+# Ignore everything in the bin directory
+build/*
+!build/.gitkeep
+bin/*
+!bin/.gitkeep
