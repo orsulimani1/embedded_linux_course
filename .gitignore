@@ -20,4 +20,5 @@ build/*
 !build/.gitkeep
 bin/*
 !bin/.gitkeep
-lesson_1/toolchain/*
+
+lesson_1/toolchain/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf
