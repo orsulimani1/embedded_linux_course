@@ -20,3 +20,4 @@ build/*
 !build/.gitkeep
 bin/*
 !bin/.gitkeep
+lesson_1/toolchain/*

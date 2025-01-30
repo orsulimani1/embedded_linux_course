@@ -1,0 +1,4 @@
+0. write a program that uses API and ABI
+1. create a hardlink to your program
+2. give your program other w permissions
+3. try to download an earlier version of the linaro toolchain and set it to arm-linux-gnueabihf-gcc (be careful try to use VM for safety)

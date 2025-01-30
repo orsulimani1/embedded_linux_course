@@ -1,0 +1,35 @@
+file CMakeLists.txt
+file bin/lesson_1/01_abi_usage/01_abi_usage
+file docs
+
+siftlink vs hardlinks
+
+echo "Hello, Hard Link" > original.txt
+ln original.txt hardlink.txt  # Create a hard link
+ls -i original.txt hardlink.txt  # Show inode numbers (they will be the same)
+
+echo "Hello, Soft Link" > original.txt
+ln -s original.txt softlink.txt  # Create a soft link
+ls -i original.txt softlink.txt  # Show inode numbers (they will be different)
+
+ls -li original.txt hardlink.txt softlink.txt
+
+special devices
+ls -l /dev/i2c-*  
+# The c at the beginning indicates it's a character device.
+
+sudo apt  install tree
+sudo tree / -L 1
+
+chmod u+x file.txt  # Add execute permission for the owner
+chmod 755 file.txt  # Set permissions to rwxr-xr-x
+
+/home/aaa/embedded_linux_course/yocto_build/tmp/work/cortexa8hf-neon-poky-linux-gnueabi
+
+nano ~/.bashrc 
+
+export PATH=$PATH:~/embedded_linux_course/lesson_1/toolchain/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf/bin
+
+
+arm-linux-gnueabihf-gcc --version
+whereis arm-linux-gnueabihf-gcc

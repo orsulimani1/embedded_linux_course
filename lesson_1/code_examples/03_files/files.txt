@@ -1,0 +1,5 @@
+touch <filename> - creates an empty file
+cat <filename> - Display file contents.
+file <filename> - Determine file type.
+ls -i file.txt 
+stat file.txt
