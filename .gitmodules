@@ -4,5 +4,5 @@
 	branch = kirkstone
 [submodule "lesson_2/u-boot"]
 	path = lesson_2/u-boot
-	url = https://github.com/u-boot/u-boot.git
-	branch = tags/v2025.01
+	url = git@openbeagle.org:beagleboard/u-boot.git
+	commit = baca7b469d6bbc2e376ca134a25187ed06f6d2d1
