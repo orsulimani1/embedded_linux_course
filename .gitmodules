@@ -2,3 +2,7 @@
 	path = yocto/poky
 	url = git://git.yoctoproject.org/poky
 	branch = kirkstone
+[submodule "lesson_2/u-boot"]
+	path = lesson_2/u-boot
+	url = https://github.com/u-boot/u-boot.git
+	branch = tags/v2025.01
