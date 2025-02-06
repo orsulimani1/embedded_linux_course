@@ -15,7 +15,7 @@ Yocto workshop
 	
 
 4. install needed packeges for ubuntu, for other distros use the equivilent packege manager 
-	sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev pylint3 xterm python3-subunit zstd liblz4-tool file locales libacl1
+	sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm python3-subunit zstd liblz4-tool file locales libacl1
 
 
 (*) Install the required packages for Yocto to Work from
@@ -32,3 +32,15 @@ in the repo level run these commands
 3. bitbake core-image-minimal
 
 it can take a while 
+
+
+## for the u-boot installation
+1. git submodule update --init --recursive
+2. sudo apt-get install make bison flex libssl-dev libgnutls28-dev
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabihf-
+export CROSS_COMPILE=arm-linux-gnueabihf-
+make am335x_evm_defconfig
+
+ls arch/arm/configs | grep am335x
+make -j$(nproc)
