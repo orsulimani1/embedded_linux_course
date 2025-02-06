@@ -1,0 +1,7 @@
+0. Use our processs vs thread example modify a copy to your liking
+1. search for another API posix group defined
+2. setup a user with uid 1000
+3. catch a segfault and print your backtrace (not so easy)
+4. add your own layer 
+5. add your recipe to that layer and run it through qemu
+
