@@ -9,8 +9,8 @@
 #define MAX_MSG_SIZE 256
 #define MSG_STOP "stop"
 #define MY_FIFO "myfifo"
-// #define BLOCKING_MODE "block"
-#define BLOCKING_MODE "nonblock"
+#define BLOCKING_MODE "block"
+// #define BLOCKING_MODE "nonblock"
 
 int make_fifo(const char *);
 
