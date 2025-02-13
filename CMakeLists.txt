@@ -13,7 +13,6 @@ set(GCC_COMPILER gcc)
 find_package(Threads REQUIRED)
 
 add_subdirectory(lesson_0/assignment_solution)
-
 add_subdirectory(lesson_1/code_examples)
-
 add_subdirectory(lesson_2/code_examples)
+add_subdirectory(lesson_3/code_examples)
