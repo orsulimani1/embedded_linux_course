@@ -30,7 +30,9 @@ in the repo level run these commands
 1. git submodule update --init --recursive
 2. source ./init_yocto.sh
 3. bitbake core-image-minimal
-
+4. runqemu beaglebone-yocto core-image-minimal nographic
+from yocto_build directory 
+5. sudo ../yocto/poky/scripts/runqemu-gen-tapdevs 1000 1000 4 tmp/sysroots-components/x86_64/qemu-helper-native/usr/bin
 it can take a while 
 
 

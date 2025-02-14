@@ -22,3 +22,5 @@ bin/*
 !bin/.gitkeep
 
 lesson_1/toolchain/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf
+lesson_1/toolchain/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf.tar.xz
+lesson_3/code_examples/who_lets_the_dogs_out

@@ -4,6 +4,7 @@
 #include <string.h>     // strlen()
 #include <fcntl.h>      // open(), O_RDONLY, O_WRONLY, O_NONBLOCK
 #include <errno.h>      // errno , EINTR
+
 #define FILENAME "../../../lesson_3/code_examples/who_lets_the_dogs_out"
 
 // ssize_t write(int fd, const void *buf, size_t count);

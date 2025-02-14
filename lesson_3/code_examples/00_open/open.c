@@ -6,8 +6,7 @@
 #include <errno.h>
 #include <unistd.h>
 
-#define FILENAME "../../lesson_3/assignments/assignments.txt"
-
+#define FILENAME "../../../lesson_3/assignments/assignments_cpy.txt"
 int get_file_permissions(const char *path);
 
 // int open(const char *pathname, int flags, mode_t mode);
