@@ -16,7 +16,7 @@ Yocto workshop
 
 4. install needed packeges for ubuntu, for other distros use the equivilent packege manager 
 	sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm python3-subunit zstd liblz4-tool file locales libacl1
-
+	sudo apt  install tmux
 
 (*) Install the required packages for Yocto to Work from
         https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#ubuntu-packages
