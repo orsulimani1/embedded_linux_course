@@ -1,0 +1,5 @@
+1. run by your own hello-from-git hello-patched
+2. create a recipe for read.c and put it in /usr/bin 
+2.5. add a symbol from cmake to control block or non-block from the recipe
+3. run your application/program from qemu
+4. create a pacth for hello-yocto and apply it from the recipe itself 
