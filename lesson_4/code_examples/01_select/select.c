@@ -17,10 +17,11 @@ int main(void)
 
     /* Add our file descriptor (stdin) to the read set. */
     FD_SET(STDIN_FILENO, &readfds);
-
+    FD_SET(STDERR_FILENO, &readfds);
+    FD_CLR(STDERR_FILENO, &readfds);
     /* Configure the timeout. */
     tv.tv_sec = TIMEOUT;
-    tv.tv_usec = 0;
+    tv.tv_usec = 500000;
 
     /*
      * select() will monitor the descriptors up to STDIN_FILENO + 1

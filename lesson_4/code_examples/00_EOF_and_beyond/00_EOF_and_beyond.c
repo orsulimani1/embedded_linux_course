@@ -15,7 +15,7 @@ int main(void) {
 
     // Move the file offset forward by 100 bytes from current position
     // off_t newPos = lseek(fd, 0, SEEK_CUR );
-    off_t newPos = lseek(fd, 0, SEEK_CUR );
+    off_t newPos = lseek(fd, 100, SEEK_CUR );
 
     if (newPos == (off_t)-1) {
         perror("lseek");
@@ -24,7 +24,7 @@ int main(void) {
     }
 
     // Write again
-    write(fd, "World", 5);
+    write(fd, " World", 6);
 
     close(fd);
     return 0;
