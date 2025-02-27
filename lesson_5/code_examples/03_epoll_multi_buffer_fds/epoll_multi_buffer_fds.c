@@ -136,9 +136,10 @@ int main(void)
             // 4) Prompt user
             printf("[Writer] > ");
             fflush(stdout);
-
+            
             // 5) Read user input
             char user_line[BUF_SIZE];
+            memset(user_line, BUF_SIZE, '\0');
             if (!fgets_unlocked(user_line, sizeof(user_line), stdin)) {
                 // EOF or error
                 break;

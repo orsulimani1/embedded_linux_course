@@ -28,6 +28,7 @@ void* io_thread_func(void *arg) {
     }
 
     flockfile(fp); // Lock file for exclusive access
+    flockfile(stdout); // Lock file for exclusive access
 
     char message[LOG_MESSAGE_SIZE];
     while (1) {
@@ -38,11 +39,13 @@ void* io_thread_func(void *arg) {
 
             fputs_unlocked(message, fp); // Efficient, unlocked I/O
             fflush(fp); // Ensure immediate write
+            fputs_unlocked(message, stdout); // Efficient, unlocked I/O
+            fflush(fp); // Ensure immediate write
         } else {
             perror("mq_receive");
         }
     }
-
+    funlockfile(stdout); // Lock file for exclusive access
     funlockfile(fp);
     fclose(fp);
     mq_close(mq);

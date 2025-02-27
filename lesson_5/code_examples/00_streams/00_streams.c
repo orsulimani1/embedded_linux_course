@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
     // we will use 3/4 of the block size to demostrate the buffered operations
     long chunk_size = (3 * block_size) / 4;
     printf("Using chunk size: %ld bytes\n", chunk_size);
-
+    
     // -------------------------------------------------------------
     // 2. Timed Copy (Buffered I/O)
     // -------------------------------------------------------------
@@ -66,7 +66,6 @@ int main(int argc, char *argv[]) {
         fclose(fin);
         return 1;
     }
-
     char *buffer = malloc(chunk_size);
     if (!buffer) {
         fprintf(stderr, "Failed to allocate buffer of size %ld\n", chunk_size);

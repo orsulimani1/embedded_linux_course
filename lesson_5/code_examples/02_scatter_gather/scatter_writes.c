@@ -16,7 +16,7 @@ int main() {
 
     if(pid==0){
         //------------------------------------------------
-        // CHILD: reader
+        // CHILD: writer
         //------------------------------------------------
         int fd = open("data.bin", O_WRONLY | O_CREAT | O_TRUNC, 0644);
         if (fd < 0) {
