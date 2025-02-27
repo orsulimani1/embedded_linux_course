@@ -1,6 +1,13 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <time.h>
+
 off_t lseek(int fd, off_t offset, int whence);
 
 lseek(fd, 0, SEEK_SET);   // Go to start
@@ -72,3 +79,70 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout);
 int ppoll(struct pollfd *fds, nfds_t nfds,
     const struct timespec *timeout_ts,
     const sigset_t *sigmask);
+
+
+setvbuf(stream, buffer, _IOFBF, custom_size);
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+
+#include <stdio.h>
+FILE *fopen(const char *filename, const char *mode);
+int fclose(FILE *stream);
+FILE * fdopen (int fd, const char *mode);
+
+
+// Reading
+int fgetc(FILE *stream);
+char *fgets(char *str, int num, FILE *stream);
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+int fscanf (FILE * stream,const char *__restrict __format, ...);
+
+
+// Writing
+int fputc(int c, FILE *stream);
+int fputs(const char *str, FILE *stream);
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+int fprintf(FILE *stream, const char *format, ...);
+
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fflush(FILE *stream);
+
+int fcloseall (void);
+
+void flockfile(FILE *stream);
+int ftrylockfile(FILE *stream);
+void funlockfile(FILE *stream);
+
+int fgetc_unlocked(FILE *stream);
+char *fgets_unlocked(char *str, int size, FILE *stream);
+size_t fread_unlocked(void *ptr, size_t size, size_t nmemb, FILE *stream);
+int fputc_unlocked(int c, FILE *stream);
+int fputs_unlocked(const char *str, FILE *stream);
+size_t fwrite_unlocked(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+
+
+#include <sys/uio.h>
+ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
+ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
+
+struct iovec {
+    void  *iov_base; // Pointer to buffer
+    size_t iov_len;  // Length of buffer
+};
+ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+
+#include <sys/epoll.h>
+int epoll_create1(int flags);
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);
+struct epoll_event
+#include <sys/eventfd.h>
+int efd = eventfd(unsigned int initval, int flags);
+
+#include <sys/mman.h>
+void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
+#include <sys/mman.h>
+int msync(void *addr, size_t length, int flags);
+int madvise(void *addr, size_t length, int advice);
