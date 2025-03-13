@@ -1,0 +1,3 @@
+1. set buffer policy in example 00 _IOFBF
+2. write a cheat with multicast using 3 concept we earned in this lesson
+

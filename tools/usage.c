@@ -146,3 +146,19 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 #include <sys/mman.h>
 int msync(void *addr, size_t length, int flags);
 int madvise(void *addr, size_t length, int advice);
+
+
+typedef struct image_header {
+    uint32_t    ih_magic;       /* Image Header Magic Number (0x27051956) */
+    uint32_t    ih_hcrc;        /* Image Header CRC Checksum */
+    uint32_t    ih_time;        /* Image Creation Timestamp */
+    uint32_t    ih_size;        /* Image Data Size */
+    uint32_t    ih_load;        /* Data Load Address */
+    uint32_t    ih_ep;          /* Entry Point Address */
+    uint32_t    ih_dcrc;        /* Image Data CRC Checksum */
+    uint8_t     ih_os;          /* Operating System */
+    uint8_t     ih_arch;        /* CPU Architecture */
+    uint8_t     ih_type;        /* Image Type */
+    uint8_t     ih_comp;        /* Compression Type */
+    uint8_t     ih_name[IH_NMLEN]; /* Image Name (32 bytes) */
+} image_header_t;
