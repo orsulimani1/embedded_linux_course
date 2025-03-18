@@ -1,0 +1,4 @@
+=> load mmc 0:1 0x82000000 uImage
+=> load mmc 0:1 0x88000000 am335x-boneblack.dtb
+iminfo 0x82000000
+=> bootm 0x82000000 - 0x88000000

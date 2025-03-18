@@ -1,0 +1,80 @@
+git clone https://source.denx.de/u-boot/u-boot.git
+cd u-boot
+git tag -l | grep v20
+export CROSS_COMPILE=arm-linux-gnueabihf-
+export ARCH=arm
+echo $ARCH
+make distclean
+ls configs | grep -i bone
+ls configs | grep -i am335x
+git checkout v2017.01
+make am335x_boneblack_defconfig 
+make -j$(nproc)
+ls -la MLO u-boot.img
+git branch
+cp MLO /media/ors/BOOT/
+cp u-boot.img /media/ors/BOOT/u-boot.img
+sync
+make menuconfig
+make savedefconfig
+cp defconfig configs/am335x-uboot-workshop_defconfig
+make am335x-uboot-workshop_defconfig
+
+make -j$(nproc)
+
+## copy a filesystem
+
+sudo tar -xjf core-image-minimal-beaglebone-yocto-20250214092914.rootfs.tar.bz2 -C fs
+
+sudo cp -ra  * /media/ors/ROOTFS/
+sync
+
+
+
+## load with zImage
+
+# Load the kernel (zImage) from the boot partition
+=> load mmc 0:1 0x82000000 zImage
+
+# Load the device tree for BeagleBone Black
+=> load mmc 0:1 0x88000000 am335x-boneblack.dtb
+
+# Set boot arguments to use your ext4 partition as root filesystem
+=> setenv bootargs 'console=ttyO0,115200n8 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait'
+
+# Boot the kernel with the device tree
+=> bootz 0x82000000 - 0x88000000
+
+load I UImage
+
+mkimage \
+  -A arm \
+  -O linux \
+  -T kernel \
+  -C none \
+  -a 0x80008000 \
+  -e 0x80008000 \
+  -n "Linux Kernel" \
+  -d arch/arm/boot/zImage uImage
+
+
+setenv bootcmd 'mmc dev 0; fatload mmc 0:1 0x82000000 uImage; fatload mmc 0:1 0x88000000 am335x-boneblack.dtb; bootm 0x82000000 - 0x88000000'
+saveenv
+
+
+# 1. Choose the SD card
+=> mmc dev 1
+mmcinfo
+=> fatload mmc 1:1 0x82000000 uImage
+
+
+# 2. TFTP the kernel image into RAM
+=> tftp 0x82000000 uImage
+
+# 3. (Optional) TFTP the device tree
+=> tftp 0x88000000 am335x-boneblack.dtb
+
+
+=> setenv loaduEnvTxt 'if load mmc 0:1 ${scriptaddr} uEnv.txt; then env import -t ${scriptaddr} ${filesize}; if test -n "$uenvcmd"; then run uenvcmd; fi; fi'
+=> setenv bootcmd 'run loaduEnvTxt; run distro_bootcmd'
+=> saveenv

@@ -162,3 +162,34 @@ typedef struct image_header {
     uint8_t     ih_comp;        /* Compression Type */
     uint8_t     ih_name[IH_NMLEN]; /* Image Name (32 bytes) */
 } image_header_t;
+
+#include <aio.h>
+
+
+struct aiocb {
+    int aio_fildes;            /* file descriptor */
+    int aio_lio_opcode;        /* operation to perform (e.g., LIO_READ or LIO_WRITE) */
+    int aio_reqprio;           /* request priority offset */
+    volatile void *aio_buf;    /* pointer to data buffer */
+    size_t aio_nbytes;         /* length of the operation */
+    struct sigevent aio_sigevent; /* signal/event notification */
+    /* internal, private members follow... */
+};
+int aio_read(struct aiocb *aiocbp);
+int aio_write(struct aiocb *aiocbp);
+int aio_error(const struct aiocb *aiocbp);
+int aio_return(struct aiocb *aiocbp);
+
+
+int aio_cancel(int fd, struct aiocb *aiocbp);
+int aio_fsync(int op, struct aiocb *aiocbp);
+int aio_suspend(const struct aiocb * const cblist[],
+                int n,
+                const struct timespec *timeout);
+
+int execl(const char *path, const char *arg, ..., NULL);
+int execv(const char *path, char *const argv[]);
+int execle(const char *path, const char *arg, ..., NULL, char *const envp[]);
+int execve(const char *path, char *const argv[], char *const envp[]);
+int execlp(const char *file, const char *arg, ..., NULL);
+int execvp(const char *file, char *const argv[]);

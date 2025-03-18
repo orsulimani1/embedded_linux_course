@@ -1,0 +1,16 @@
+# Set up addresses for loading the kernel and DTB
+loadaddr=0x82000000
+fdtaddr=0x88000000
+
+# Commands to load our uImage and device tree from partition 1 of mmc
+loaduimage=load mmc 0:1 ${loadaddr} uImage
+loadfdt=load mmc 0:1 ${fdtaddr} am335x-boneblack.dtb
+
+# Command to boot the loaded kernel
+bootuimage=bootm ${loadaddr} - ${fdtaddr}
+
+# The key variable: 'uenvcmd' is automatically executed if found
+uenvcmd=echo "Loading and booting uImage via custom uEnv.txt..." && \
+         run loaduimage && \
+         run loadfdt && \
+         run bootuimage

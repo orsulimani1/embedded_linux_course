@@ -1,0 +1,6 @@
+Image Name:   MyCustomKernel
+Created:      Thu Mar 13 11:53:42 2025
+Image Type:   ARM Linux Kernel Image (uncompressed)
+Data Size:    7884728 Bytes = 7699.93 KiB = 7.52 MiB
+Load Address: 80008000
+Entry Point:  80008000
