@@ -37,7 +37,8 @@ int main() {
     // Busy-wait loop (for demonstration only). 
     // In production, use signals or other event mechanisms to be notified.
     while (aio_error(&cb) == EINPROGRESS) {
-        // We could do more useful work here
+        printf("Hi im here\n");
+        usleep(100);
     }
 
     // Check the final status
