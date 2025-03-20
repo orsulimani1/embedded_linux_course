@@ -5,6 +5,7 @@
 #include <fcntl.h>      // open(), O_RDONLY, O_WRONLY, O_NONBLOCK
 #include <sys/stat.h>   // mkfifo() (if you want to create FIFO in code)
 #include <errno.h>      // errno, EAGAIN, EWOULDBLOCK
+#include <sys/wait.h>
 
 #define MAX_MSG_SIZE 256
 #define MSG_STOP "stop"

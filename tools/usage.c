@@ -193,3 +193,8 @@ int execle(const char *path, const char *arg, ..., NULL, char *const envp[]);
 int execve(const char *path, char *const argv[], char *const envp[]);
 int execlp(const char *file, const char *arg, ..., NULL);
 int execvp(const char *file, char *const argv[]);
+
+
+pid_t wait(int *status);
+pid_t waitpid(pid_t pid, int *status, int options);
+int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options);
