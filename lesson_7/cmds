@@ -1,4 +1,6 @@
-embedded_linux_course/yocto_build/tmp/work/beaglebone_yocto-poky-linux-gnueabi/linux-yocto/5.15.150+gitAUTOINC+567f0adb9d_4fca0c4373-r0/kernel-meta
+embedded_linux_course/yocto_build/tmp/work/beaglebone_yocto-poky-linux-gnueabi/
+linux-yocto/5.15.150+gitAUTOINC+567f0adb9d_4fca0c4373-r0/kernel-meta
 https://github.com/u-boot/u-boot
 yocto_build/tmp/work/beaglebone_yocto-poky-linux-gnueabi/u-boot/1_2022.01-r0/git
-yocto_build/tmp/work/beaglebone_yocto-poky-linux-gnueabi/u-boot/1_2022.01-r0/git/arch/arm/lib/bootm.c
+yocto_build/tmp/work/beaglebone_yocto-poky-linux-gnueabi/u-boot/1_2022.01-r0/git
+/arch/arm/lib/bootm.c

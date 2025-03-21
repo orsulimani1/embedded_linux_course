@@ -14,6 +14,9 @@ int main() {
     } else if (pid == 0) {
         // Child process
         printf("Child process (PID: %d) running...\n", getpid());
+        pid_t parent = getppid();
+        kill(parent, SIGTERM);
+
         sleep(10); // Child will run for 10 seconds unless terminated
         printf("Child process completed normally\n");
         exit(0);
@@ -22,7 +25,7 @@ int main() {
         printf("Parent process (PID: %d) created child (PID: %d)\n", 
                getpid(), pid);
         
-        sleep(2); // Give child time to start
+        sleep(10); // Give child time to start
         
         // Send SIGTERM to child process
         printf("Parent sending SIGTERM to child...\n");

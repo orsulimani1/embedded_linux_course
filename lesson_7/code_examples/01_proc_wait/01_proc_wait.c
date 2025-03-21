@@ -13,7 +13,7 @@ int main() {
     } else if (pid == 0) {
         // Child process
         printf("Child process (PID: %d) running...\n", getpid());
-        sleep(3);
+        sleep(15);
         printf("Child process exiting with status 42\n");
         exit(42); // Exit with status 42
     } else {
