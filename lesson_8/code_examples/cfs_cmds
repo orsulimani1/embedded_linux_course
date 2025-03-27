@@ -1,0 +1,44 @@
+# View the minimum granularity of CFS scheduling (in nanoseconds)
+cat /proc/sys/kernel/sched_min_granularity_ns
+
+# View the CFS bandwidth period (for CFS bandwidth control)
+cat /proc/sys/kernel/sched_cfs_bandwidth_slice_us
+
+# View the latency target
+cat /proc/sys/kernel/sched_latency_ns
+
+# Temporarily adjust settings (for testing)
+echo 10000000 > /proc/sys/kernel/sched_min_granularity_ns
+
+# zcat tmp/work/beaglebone_yocto-poky-linux-gnueabi/linux-yocto-rt/*/defconfig | grep PREEMPT_RT
+zcat tmp/work/beaglebone_yocto-poky-linux-gnueabi/linux-yocto-rt/*/defconfig | grep PREEMPT_RT
+
+
+uname -a
+# Should show "PREEMPT_RT" in the output
+
+cat /proc/cmdline
+# Should include "preempt=rt" parameter
+
+# Check RT settings
+cat /proc/sys/kernel/sched_rt_runtime_us
+# Should be -1 for full RT (or 950000 for 95% RT)
+
+# Check max RT priority
+cat /proc/sys/kernel/sched_rt_period_us
+
+
+# Basic latency test (running for 1 minute)
+cyclictest -p 80 -t1 -n -i 1000 -d 60
+
+# Multi-threaded test with histogram
+cyclictest -p 80 -t4 -n -i 1000 -l 10000 -h 400 -m
+
+Parameters Explained:
+    -p 80: Run with RT priority 80
+    -t4: Use 4 test threads
+    -n: Use clock_nanosleep
+    -i 1000: 1000μs (1ms) intervals
+    -l 10000: Loop 10000 times
+    -h 400: Create histogram with 400μs max
+    -m: Lock memory with mlockall()

@@ -198,3 +198,59 @@ int execvp(const char *file, char *const argv[]);
 pid_t wait(int *status);
 pid_t waitpid(pid_t pid, int *status, int options);
 int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options);
+
+#include <sched.h>
+#include <errno.h>
+#include <string.h>
+// struct sched_attr {
+//     uint32_t size;              /* Size of this structure */
+//     uint32_t sched_policy;      /* Policy (SCHED_DEADLINE) */
+//     uint64_t sched_flags;       /* Flags */
+//     int32_t  sched_nice;        /* Nice value (unused) */
+//     uint32_t sched_priority;    /* Static priority (unused) */
+//     uint64_t sched_runtime;     /* Runtime in nanoseconds */
+//     uint64_t sched_deadline;    /* Deadline in nanoseconds */
+//     uint64_t sched_period;      /* Period in nanoseconds */
+// };
+
+int sched_setattr(pid_t pid, const struct sched_attr *attr, unsigned int flags);
+
+int sched_getattr(pid_t pid, struct sched_attr *attr, unsigned int size, unsigned int flags);
+
+int sched_getscheduler(pid_t pid);
+
+int sched_getparam(pid_t pid, struct sched_param *param);
+
+int sched_get_priority_min(int policy);
+int sched_get_priority_max(int policy);
+
+int sched_setscheduler(pid_t pid, int policy, const struct sched_param *param);
+
+
+int sched_setparam(pid_t pid, const struct sched_param *param);
+
+#include <sys/time.h>
+#include <sys/resource.h>
+
+int getpriority(int which, id_t who);
+
+int setpriority(int which, id_t who, int value);
+
+int nice(int inc);
+
+int sched_yield(void);
+int nanosleep(const struct timespec *req, struct timespec *rem);
+int clock_nanosleep(clockid_t clock_id, int flags,
+    const struct timespec *request, struct timespec *remain);
+
+    /* Yield the processor */
+int sched_yield(void);
+
+int sched_setaffinity(pid_t pid, size_t cpusetsize, const cpu_set_t *mask);
+
+int sched_getaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
+
+void CPU_ZERO(cpu_set_t *set);      /* Clear CPU set */
+void CPU_SET(int cpu, cpu_set_t *set);    /* Add CPU to set */
+void CPU_CLR(int cpu, cpu_set_t *set);    /* Remove CPU from set */
+int CPU_ISSET(int cpu, const cpu_set_t *set); /* Test if CPU in set */
