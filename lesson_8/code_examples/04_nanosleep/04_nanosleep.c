@@ -7,7 +7,7 @@ int main() {
     struct timespec req, rem;
     
     // Request 10.5 milliseconds sleep
-    req.tv_sec = 0;
+    req.tv_sec = 100;
     req.tv_nsec = 10500000;  // 10.5 million nanoseconds
     
     printf("Sleeping for 10.5 ms...\n");

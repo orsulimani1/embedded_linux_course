@@ -6,19 +6,21 @@
 #include <string.h>
 
 int main() {
-    int policy = SCHED_FIFO;  // Real-time FIFO scheduling
+    int policy = SCHED_RR;  // Real-time FIFO scheduling
     struct sched_param param;
     
     // Get valid priority range
     int max_prio = sched_get_priority_max(policy);
     int min_prio = sched_get_priority_min(policy);
     
+
+    printf("my cuurect PID is %d\n", getpid());
     if (max_prio == -1 || min_prio == -1) {
         perror("sched_get_priority_max/min");
         exit(EXIT_FAILURE);
     }
     
-    printf("Priority range for SCHED_FIFO: %d - %d\n", min_prio, max_prio);
+    printf("Priority range for SCHED_RR: %d - %d\n", min_prio, max_prio);
     
     // Set to medium-high priority
     param.sched_priority = min_prio + (max_prio - min_prio) * 3/4;
@@ -34,7 +36,7 @@ int main() {
     printf("Successfully set SCHED_FIFO with priority %d\n", param.sched_priority);
     
     // Run for a short while to demonstrate
-    sleep(10);
+    sleep(100);
     
     return 0;
 }
