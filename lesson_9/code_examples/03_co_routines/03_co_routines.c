@@ -5,7 +5,7 @@
 #include <sys/time.h>
 
 #define STACK_SIZE 16384
-#define NUM_FIBONACCI 40
+#define NUM_FIBONACCI 28
 #define NUM_ITERATIONS 10
 
 // ----- Coroutine Implementation -----
