@@ -202,7 +202,6 @@ void blink_pattern(MemoryMap *map, int bank, int pin, int count, int on_ms, int 
         }
     }
 }
-
 // Function to create SOS pattern (... --- ...)
 void sos_pattern(MemoryMap *map, int bank, int pin) {
     printf("Generating SOS pattern on GPIO%d_%d...\n", bank, pin);
